@@ -1,3 +1,4 @@
+//g++ main.cpp include.h OLMatrix.h RLSMatrix.h -o Matrix
 #include"include.h"
 #include"OLMatrix.h"
 #include"RLSMatrix.h"
@@ -39,12 +40,12 @@ int main() {
 
 			}
 
-			cout << "以三元组形式输入第一个矩阵的数据：" << endl;
+			cout << "以三元组形式输入第一个矩阵的数据,行列下标均从1开始：" << endl;
 			CreateOLMatrix(Minfo[0]);
 
 			for (int i = 1; i < num; i++)
 			{
-				cout << "以三元组形式输入第" << i + 1 << "个矩阵的数据：" << endl;
+				cout << "以三元组形式输入第" << i + 1 << "个矩阵的数据,行列下标均从1开始：" << endl;
 
 				CreateOLMatrix(Minfo[i]);
 
@@ -88,14 +89,14 @@ int main() {
 
 			}
 
-			cout << "以三元组形式输入第一个矩阵的数据：" << endl;
+			cout << "以三元组形式输入第一个矩阵的数据,行列下标均从1开始：" << endl;
 			InitMatrix(Minfo[0]);
 
 			RLSMatrix* tempSrc = Minfo[0];
 			RLSMatrix* tempTar = new RLSMatrix;
 			for (int i = 1; i < num; i++)
 			{
-				cout << "以三元组形式输入第" << i + 1 << "个矩阵的数据：" << endl;
+				cout << "以三元组形式输入第" << i + 1 << "个矩阵的数据,行列下标均从1开始：" << endl;
 
 				InitMatrix(Minfo[i]);
 
