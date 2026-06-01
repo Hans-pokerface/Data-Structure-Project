@@ -1,3 +1,4 @@
+//g++ main.cpp include.h OLMatrix.h RLSMatrix.h -o Matrix
 #include"include.h"
 #include"OLMatrix.h"
 
