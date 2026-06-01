@@ -13,7 +13,7 @@ int main() {
 		Src->rhead.resize(Src->mu + 1, NULL);
 		Src->chead.resize(Src->nu + 1, NULL);
 
-		cout << "以三元组形式输入第1个矩阵的数据(行序)：" << endl;
+		cout << "以三元组形式输入第1个矩阵的数据(行序，从1开始)：" << endl;
 		CreateOLMatrix(Src);
 
 		Crosslist* Tar;
@@ -43,7 +43,7 @@ int main() {
 					continue;
 				}
 
-				cout << "以三元组形式输入第" << num << "个矩阵的数据(行序)：" << endl;
+				cout << "以三元组形式输入第" << num << "个矩阵的数据(行序，从1开始)：" << endl;
 				CreateOLMatrix(Tar);
 				AddMinusOLMatrix(Src, Tar, op);				
 				PrintOLMatrix(Src);
@@ -62,7 +62,7 @@ int main() {
 					continue;
 				}
 
-				cout << "以三元组形式输入第" << num << "个矩阵的数据(行序)：" << endl;
+				cout << "以三元组形式输入第" << num << "个矩阵的数据(行序，从1开始)：" << endl;
 				CreateOLMatrix(Tar);
 
 				Crosslist* Res = new Crosslist;
