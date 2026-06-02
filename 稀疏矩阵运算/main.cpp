@@ -1,4 +1,3 @@
-//g++ main.cpp include.h OLMatrix.h RLSMatrix.h -o Matrix
 #include"include.h"
 #include"OLMatrix.h"
 
@@ -8,6 +7,7 @@ int main() {
 	
 	while (1)
 	{
+		//先输入第一个矩阵的数据
 		cout << "请输入第1个矩阵的行数、列数、非零元数：" << endl;
 		Crosslist* Src = new Crosslist;
 		cin >> Src->mu >> Src->nu >> Src->tu;
@@ -20,9 +20,10 @@ int main() {
 		Crosslist* Tar;
 		int num = 1;
 
+		//之后每次都输入一个运算和一个数组
 		while (1)
 		{
-			int op;//运算类型（1-加；2-减；3-乘）
+			int op;//运算类型（1-加；2-减；3-乘；0-退出运算）
 			cout << "请输入运算类型（1-加；2-减；3-乘；0-退出运算）：" << endl;
 			cin >> op;
 
@@ -33,9 +34,9 @@ int main() {
 			Tar->rhead.resize(Tar->mu + 1, NULL);
 			Tar->chead.resize(Tar->nu + 1, NULL);
 
-			if (op == 1 || op == 2)
+			if (op == 1 || op == 2)//如果是加减
 			{
-				/*对数据进行检查*/
+				//对数据进行检查
 				if (Tar->mu != Src->mu || Tar->nu != Src->nu)
 				{
 					cout << "这组数据不符合要求，请重新输入。";
@@ -46,15 +47,16 @@ int main() {
 
 				cout << "以三元组形式输入第" << num << "个矩阵的数据(行序，从1开始)：" << endl;
 				CreateOLMatrix(Tar);
-				AddMinusOLMatrix(Src, Tar, op);				
-				PrintOLMatrix(Src);
+				AddMinusOLMatrix(Src, Tar, op);
 
+				//结果储存在Src中；Tar后续不再使用，需要清除
+				PrintOLMatrix(Src);
 				FreeCrosslist(Tar);
 			}
 
-			else if (op == 3)
+			else if (op == 3)//如果是乘法
 			{
-				/*对数据进行检查*/
+				//对数据进行检查
 				if (Tar->mu != Src->nu)
 				{
 					cout << "这组数据不符合要求，请重新输入。";
@@ -67,10 +69,10 @@ int main() {
 				CreateOLMatrix(Tar);
 
 				Crosslist* Res = new Crosslist;
-
 				MultiOLMatrix(Src, Tar, Res);
-				PrintOLMatrix(Res);
 
+				//结果存在于Res中；Src和Tar均清除，Src赋值为Res
+				PrintOLMatrix(Res);
 				FreeCrosslist(Src);
 				FreeCrosslist(Tar);
 				Src = Res;

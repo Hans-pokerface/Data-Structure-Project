@@ -42,7 +42,7 @@ void MultMatrix(RLSMatrix* A, RLSMatrix* B, RLSMatrix* P)
 		int arow;//对A的每一行进行计算
 		for (arow = 1; arow <= A->mu; arow++)
 		{
-			for (int col = 1; col <= B->nu; col++)
+			for (int col = 1; col <= P->nu; col++)
 				ctemp[col] = 0;
 			//暂存这一行每个位置的计算结果
 
@@ -56,8 +56,7 @@ void MultMatrix(RLSMatrix* A, RLSMatrix* B, RLSMatrix* P)
 				//相当于每次取A中的一个元素，乘B中的一行，一次性把A中那个元素的贡献算完                
 			}
 
-
-			for (int col = 1; col <= B->nu; col++)
+			for (int col = 1; col <= P->nu; col++)
 			{
 				if (ctemp[col] != 0)
 				{
