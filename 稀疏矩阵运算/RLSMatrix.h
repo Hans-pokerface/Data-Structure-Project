@@ -9,8 +9,8 @@ typedef struct
 
 typedef struct
 {
-	vector<Triple> data;
-	vector<int> rpos;//每行第一个元素所在的位置
+	vector<Triple> data;  
+	vector<int> rpos;  //每行第一个元素所在的位置
 	int mu, nu, tu;
 }RLSMatrix;
 

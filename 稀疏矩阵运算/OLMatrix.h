@@ -1,14 +1,15 @@
 #pragma once
 #include"include.h"
 
-//数据结构：十字链表
+//链表节点
 typedef struct OLNode
 {
 	int i, j;//行列值
 	int e;//元素值
-	OLNode* right, * down;//指向右侧、下方的下一个非零元
+	OLNode* right, * down;//指向右侧、下方的下一个非零元的位置
 }OLNode;
 
+//十字链表
 typedef struct
 {
 	vector<OLNode*> rhead, chead;//储存每一行、每一列第一个非零元的指针

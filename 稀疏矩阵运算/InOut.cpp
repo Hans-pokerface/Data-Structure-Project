@@ -38,12 +38,12 @@ void CreateOLMatrix(Crosslist* M)
 		}
 		currentCol[jcur] = p;//更新列指针
 	}
-
 }
 
 //PrintOLMatrix():根据十字链表生成二维数组并打印
 void PrintOLMatrix(Crosslist* M)
 {
+	//结果暂存于一个二维数组
 	vector<vector<int>> res(M->mu + 1);
 	for (int i = 1; i <= M->mu; i++)
 	{

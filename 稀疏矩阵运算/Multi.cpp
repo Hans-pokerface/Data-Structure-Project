@@ -2,6 +2,8 @@
 #include"OLMatrix.h"
 
 //MultiOLMatrix():M=A*B，乘法结果以十字链表的形式存储于M中
+//逐行求积，每次A中一个元素乘B的一行，计算它对于这一行的贡献。
+//每完成一行的计算之后，类似于CreateOLMatrix插入节点。
 void MultiOLMatrix(Crosslist* A, Crosslist* B, Crosslist* M)
 {
 	//根据A,B的行列值对M的行列赋值

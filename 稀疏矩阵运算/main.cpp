@@ -27,6 +27,13 @@ int main() {
 			cout << "请输入运算类型（1-加；2-减；3-乘；0-退出运算）：" << endl;
 			cin >> op;
 
+			//先判断op是否合法
+			if (op > 3 || op < 0)
+			{
+				cout << "操作类型不合法！" << endl;
+				continue;
+			}
+
 			num++;
 			cout << "请输入第" << num << "个矩阵的行数、列数、非零元数：" << endl;
 			Tar = new Crosslist;
@@ -81,12 +88,6 @@ int main() {
 			else if (op == 0)
 			{
 				break;
-			}
-
-			else
-			{
-				cout << "操作类型不合法！" << endl;
-				continue;
 			}
 
 			cout << endl;

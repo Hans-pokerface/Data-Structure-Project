@@ -1,7 +1,6 @@
 #include"include.h"
 #include"OLMatrix.h"
 
-
 void AddMinusOLMatrix(Crosslist* A, Crosslist* B, int op)
 {
 	vector<OLNode*> hl(A->nu + 1, NULL);
@@ -85,7 +84,7 @@ void AddMinusOLMatrix(Crosslist* A, Crosslist* B, int op)
 							hl[p->j] = hl[p->j]->down;
 						hl[p->j]->down = p->down;
 					}
-					free(p);
+					delete p;
 				}
 				else
 				{
