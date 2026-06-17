@@ -1,6 +1,6 @@
 #include "elevator_multi.h"
 
-/* ---------- ¸¨Öúº¯Êý ---------- */
+/* ---------- å·¥å…·å‡½æ•° ---------- */
 int random_range(int min, int max) {
     return min + rand() % (max - min + 1);
 }
@@ -46,7 +46,7 @@ Passenger* create_passenger(void) {
     return p;
 }
 
-/* ---------- ³Ë¿Íµ½´ï´¦Àí ---------- */
+/* ---------- ä¹˜å®¢åˆ°è¾¾å¤„ç† ---------- */
 void generate_passenger(void) {
     Passenger* p = create_passenger();
     total_passengers++;
@@ -79,7 +79,7 @@ void generate_passenger(void) {
     schedule_event(next_delay, EV_PASSENGER_ARRIVE, -1, NULL);
 }
 
-/* ---------- ·ÅÆú´¦Àí ---------- */
+/* ---------- ä¹˜å®¢æ”¾å¼ƒç­‰å¾…å¤„ç† ---------- */
 void passenger_giveup(Passenger* p) {
     if (p->entered) return;
     int elev_id = p->assigned_elev;
@@ -120,7 +120,7 @@ void passenger_giveup(Passenger* p) {
     free(p);
 }
 
-/* ---------- ÊÂ¼þ·Ö·¢ ---------- */
+/* ---------- äº‹ä»¶å¤„ç† ---------- */
 void process_event(Event* e) {
     switch (e->type) {
     case EV_PASSENGER_ARRIVE:
@@ -150,7 +150,7 @@ void process_event(Event* e) {
     }
 }
 
-/* ---------- Ö÷º¯Êý ---------- */
+/* ---------- ä¸»å‡½æ•° ---------- */
 int main(int argc, char* argv[]) {
     int elev_count = 3;
     if (argc > 1) elev_count = atoi(argv[1]);

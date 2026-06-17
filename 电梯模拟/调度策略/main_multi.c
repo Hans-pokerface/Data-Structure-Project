@@ -56,7 +56,7 @@ void gen_p(void)
         p_count[k] = cnt;
     }
 }
-/* ---------- �������� ---------- */
+/* ---------- 工具函数 ---------- */
 int random_range(int min, int max) {
     return min + rand() % (max - min + 1);
 }
@@ -105,7 +105,7 @@ Passenger* create_passenger(void) {
     return p;
 }
 
-/* ---------- �˿͵��ﴦ�� ---------- */
+/* ---------- 乘客到达处理 ---------- */
 void generate_passenger(void) {
     Passenger* p = create_passenger();
     total_passengers++;
@@ -142,7 +142,7 @@ void generate_passenger(void) {
     }
 }
 
-/* ---------- �������� ---------- */
+/* ---------- 乘客放弃等待处理 ---------- */
 void passenger_giveup(Passenger* p) {
     if (p->entered) return;
     int elev_id = p->assigned_elev;
@@ -184,7 +184,7 @@ void passenger_giveup(Passenger* p) {
     free(p);
 }
 
-/* ---------- �¼��ַ� ---------- */
+/* ---------- 事件处理 ---------- */
 void process_event(Event* e) {
     switch (e->type) {
     case EV_PASSENGER_ARRIVE:
@@ -246,8 +246,8 @@ void evaluate_weights(int elev_count)
             giveup += giveup_passengers;
         }
 }
-/* ---------- ������ ---------- */
-int main(int argc, char* argv[]) {
+/* ---------- 主函数 ---------- */
+int main(int argc, char* argv++) {
     int elev_count = 3;
     if (argc > 1) elev_count = atoi(argv[1]);
     if (elev_count < 1) elev_count = 1;

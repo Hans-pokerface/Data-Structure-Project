@@ -6,7 +6,7 @@
 #include <string.h>
 #include <time.h>
 
-/* ========== ���� ========== */
+/* ========== 常量 ========== */
 #define FLOORS         5
 #define MAX_ELEVATORS  10   
 #define CAPACITY       15
@@ -45,7 +45,7 @@ typedef struct {
 
 extern PassengerData p_data[DATASET_NUM][MAX_DATA_PASSENGERS];
 extern int p_count[DATASET_NUM];
-/* ========== �¼����� ========== */
+/* ========== 事件类型 ========== */
 typedef enum {
     EV_PASSENGER_ARRIVE,
     EV_ELEV_ARRIVE,
@@ -57,7 +57,7 @@ typedef enum {
     EV_IDLE_BACK
 } EventType;
 
-/* ========== ���ݽṹ ========== */
+/* ========== 数据结构 ========== */
 typedef struct Passenger {
     int id;
     int in_floor;
@@ -68,20 +68,20 @@ typedef struct Passenger {
     int assigned_elev; //对于多梯模拟，存储欲分配的电梯编号
 } Passenger;
 
-// �����ڳ˿�ջ (����ȳ�)
+// 电梯乘客栈（顺序数组）
 typedef struct {
     Passenger* stack[CAPACITY];
     int top;
 } ElevatorStack;
 
-// ÿ��ȴ����� (ѭ�����У��Ƚ��ȳ�)
+// 每层等待队列（循环数组实现）
 typedef struct {
     Passenger* queue[100];
     int front;
     int rear;
 } WaitQueue;
 
-// ����
+// 电梯
 typedef struct {
     int id;
     int floor;
@@ -96,7 +96,7 @@ typedef struct {
     WaitQueue wait_queues[FLOORS]; 
 } Elevator;
 
-// �¼�
+// 事件
 typedef struct {
     int time;
     EventType type;
@@ -107,7 +107,7 @@ typedef struct {
     } data;
 } Event;
 
-/* ========== ȫ�ֱ������� ========== */
+/* ========== 全局变量定义 ========== */
 extern Elevator elevators[MAX_ELEVATORS];
 extern int num_elevators;
 extern int floor_up[FLOORS];
@@ -118,17 +118,17 @@ extern int completed_passengers;
 extern int giveup_passengers;
 extern double loss;
 
-/* ========== �������� ========== */
-// ��ʼ��
+/* ========== 函数声明 ========== */
+// 初始化
 void init_system(int elev_count);
 
-// �Ѳ���
+// 堆操作
 void heap_push(Event e);
 Event heap_pop(void);
 int heap_empty(void);
 void schedule_event(int delay, EventType type, int elev_id, void* data);
 
-// �˿����
+// 乘客相关
 void generate_passenger(void);
 void passenger_giveup(Passenger* p);
 Passenger* create_passenger(void);
@@ -136,7 +136,7 @@ int random_range(int min, int max);
 int generate_giveup_time(int in, int out);
 int generate_inter_time(void);
 
-// ���ݺ����߼�
+// 事件处理流程
 void process_event(Event* e);
 void elevator_arrive(int elev_id, int floor);
 void open_door(int elev_id);
@@ -148,7 +148,7 @@ void continue_moving(int elev_id);
 void move_to_floor(int elev_id, int target);
 void idle_timeout(int elev_id);
 
-// ��������Ϊָ��¥�������������ŵ���
+// 调度权重结构体
 typedef struct {
     double w_dist;
     double w_same_dir;

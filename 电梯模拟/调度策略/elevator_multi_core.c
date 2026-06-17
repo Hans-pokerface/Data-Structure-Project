@@ -1,6 +1,6 @@
 #include "elevator_multi.h"
 
-/* ȫ�ֱ������� */
+/* 全局变量定义 */
 Elevator elevators[MAX_ELEVATORS];
 int num_elevators = 3;
 int floor_up[FLOORS] = { 0 };
@@ -14,7 +14,7 @@ static Event* event_heap = NULL;
 static int heap_size = 0;
 static int heap_capacity = 0;
 
-/* ---------- �Ѳ��� ---------- */
+/* ---------- 堆操作 ---------- */
 void heap_push(Event e) {
     if (heap_size >= heap_capacity) {
         heap_capacity = heap_capacity ? heap_capacity * 2 : 2000;
@@ -70,7 +70,7 @@ void schedule_event(int delay, EventType type, int elev_id, void* data) {
     heap_push(e);
 }
 
-/* ---------- ��ʼ�� ---------- */
+/* ---------- 初始化 ---------- */
 void init_system(int elev_count) {
     //srand((unsigned)time(NULL));
     current_time = 0;
@@ -104,7 +104,7 @@ void init_system(int elev_count) {
     giveup_passengers = 0;
 }
 
-/* ---------- ���ݺ��Ķ��� ---------- */
+/* ---------- 电梯到达处理 ---------- */
 void elevator_arrive(int elev_id, int floor) {
     Elevator* e = &elevators[elev_id];
     e->floor = floor;
@@ -320,7 +320,7 @@ void idle_timeout(int elev_id) {
     }
 }
 
-/* ---------- ��������Ϊָ��¥��ͷ���������ŵ��� ---------- */
+/* ---------- 调度电梯到指定方向请求 ---------- */
 int dispatch_elevator(int floor, int direction, DispatchWeights *w) {
     int best_id = -1;
     int best_score = 999999;
